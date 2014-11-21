@@ -27,6 +27,7 @@ zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
   'editor' \
+  'ssh' \
   'history' \
   'directory' \
   'spectrum' \
@@ -67,6 +68,9 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 #
 # History Substring Search
 #
+
+# Enable color
+zstyle ':prezto:module:history-substring-search' color 'yes'
 
 # Set the query found color.
 zstyle ':prezto:module:history-substring-search:color' found ''

@@ -9,94 +9,93 @@ set nocompatible
 filetype off
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle Configuration
+" => Vim plug Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+" Required:
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle required!
-Bundle 'gmarik/vundle'
+" My Bundles here:
 
-" My Bundles:
-"
-" Original repos on github
 " Editor
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-abolish'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'bling/vim-airline'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'honza/vim-snippets'
-Bundle 'sjl/gundo.vim'
-Bundle 'sjl/vitality.vim'
-Bundle 'gcmt/taboo.vim'
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'YankRing.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-dispatch'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'bling/vim-airline'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'honza/vim-snippets'
+Plug 'sjl/gundo.vim'
+Plug 'sjl/vitality.vim'
+Plug 'gcmt/taboo.vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'YankRing.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
 
 " Coding
-Bundle 'SirVer/ultisnips'
-Bundle 'godlygeek/tabular'
-Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-Bundle 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
+Plug 'godlygeek/tabular'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 
 " Search
-Bundle 'rking/ag.vim'
-Bundle 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 
 " Git
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Javascript
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'moll/vim-node'
+Plug 'pangloss/vim-javascript'
+Plug 'kchmck/vim-coffee-script'
+Plug 'moll/vim-node'
 
 " Markup
-Bundle 'mattn/emmet-vim'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'groenewege/vim-less'
-Bundle 'othree/html5.vim'
-Bundle 'wavded/vim-stylus'
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'JSON.vim'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'sukima/xmledit'
+Plug 'mattn/emmet-vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'groenewege/vim-less'
+Plug 'othree/html5.vim'
+Plug 'wavded/vim-stylus'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'JSON.vim'
+Plug 'digitaltoad/vim-jade'
+Plug 'sukima/xmledit'
+Plug 'mxw/vim-jsx'
 
 " Indent
-Bundle 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Ruby & Rails
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-cucumber'
-Bundle 'slim-template/vim-slim'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-haml'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-cucumber'
+Plug 'slim-template/vim-slim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-haml'
 
 " Haskell
-Bundle 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
 
 " Go
-" Bundle 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
 " Other languages
-Bundle 'hdima/python-syntax'
-
+Plug 'hdima/python-syntax'
 
 " Vim themes
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -597,6 +596,9 @@ nmap <leader>n :NERDTreeMirrorToggle<CR>
 "" Ctrlp.vim
 let g:ctrlp_map = '<leader>j'
 map <leader>f :CtrlPMRU<CR>
+noremap <leader>f :CtrlPMRU<CR>
+noremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>g :CtrlPGhq<CR>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
   \ 'dir'  : '\v[\/](\.(git|hg|svn|bzr|DS_Store|coffee)|node_modules|)$',
@@ -721,3 +723,17 @@ let g:gitgutter_eager = 0
 
 "" Ag.vim
 nnoremap <leader>a :Ag ''<left>
+
+"" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_extra_conf_vim_data = ['&filetype']
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+"" Haskell
+autocmd FileType haskell set softtabstop=4
+autocmd FileType haskell set tabstop=8
+autocmd FileType haskell set shiftwidth=4
+autocmd FileType haskell set shiftround
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
