@@ -11,4 +11,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+# Source autojump
+. /usr/share/autojump/autojump.sh
 
