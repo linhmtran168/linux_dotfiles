@@ -79,6 +79,3 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
-
-# Rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
