@@ -33,6 +33,9 @@ fi
 # Paths
 #
 
+# Composer
+export COMPOSER_DIR=$HOME/.composer
+
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
@@ -44,6 +47,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
+  $COMPOSER_DIR/vendor/bin
   $path
 )
 
@@ -75,6 +79,3 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
-
-# Rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
