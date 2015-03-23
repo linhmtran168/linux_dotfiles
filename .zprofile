@@ -36,6 +36,9 @@ fi
 # Composer
 export COMPOSER_DIR=$HOME/.composer
 
+# Rbenv root
+export RBENV_ROOT=/usr/local/rbenv
+
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
@@ -48,6 +51,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /usr/local/{bin,sbin}
   $COMPOSER_DIR/vendor/bin
+  $RBENV_ROOT/bin
   $path
 )
 
