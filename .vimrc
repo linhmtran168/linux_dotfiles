@@ -21,6 +21,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-dispatch'
 Plug 'Lokaltog/vim-easymotion'
@@ -36,6 +37,7 @@ Plug 'gcmt/taboo.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'YankRing.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
+Plug 'terryma/vim-multiple-cursors'
 
 " Coding
 Plug 'SirVer/ultisnips'
@@ -69,6 +71,8 @@ Plug 'JSON.vim'
 Plug 'digitaltoad/vim-jade'
 Plug 'sukima/xmledit'
 Plug 'mxw/vim-jsx'
+Plug 'xsbeats/vim-blade'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Indent
 Plug 'nathanaelkane/vim-indent-guides'
@@ -89,11 +93,11 @@ Plug 'eagletmt/neco-ghc'
 " Go
 Plug 'fatih/vim-go'
 
-" Other languages
+" Python
 Plug 'hdima/python-syntax'
 
 " Vim themes
-Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -112,8 +116,9 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader   = ","
-let g:mapleader = ","
+nnoremap <space> <nop>
+let mapleader   = "\<space>"
+let g:mapleader = "\<space>"
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -122,13 +127,15 @@ nmap <leader>w :w!<cr>
 autocmd! bufwritepost vimrc source ~/.vimrc
 
 " Set default shell
-set shell=/bin/zsh
+set shell=/usr/bin/zsh
 
+" No showmatch
+set noshowmatch
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the curors - when moving vertical..
+" Set 7 lines to the cursor - when moving vertical..
 set so=7
 
 set wildmenu "Turn on WiLd menu
@@ -184,16 +191,17 @@ set foldmethod=indent
 syntax enable
 
 "Set font
-set gfn=Source\ Code\ Pro\ 10
+set gfn=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
 set background=dark
 set t_Co=256
 
 if has('gui_running')
   set guioptions-=T
   set guioptions-=e
-  colorscheme Tomorrow-Night-Eighties
+  colorscheme base16-eighties
 else
-  colorscheme Tomorrow-Night-Eighties
+  let base16colorspace=256
+  colorscheme base16-eighties
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -260,10 +268,6 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-
-" Map space to / (search) and c-space to ? (backgwards search)
-map <space> /
-map <c-space> ?
 
 " Disable hightlight when <leander><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -546,8 +550,9 @@ set grepprg=/usr/bin/grep\ -nH
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" General setting
 " Sets show line number
-set relativenumber
 set number
+" Show relative line number
+set relativenumber
 set ttyfast
 set fillchars=diff:·
 " Fix ruby slow navigation
@@ -595,7 +600,6 @@ nmap <leader>n :NERDTreeMirrorToggle<CR>
 
 "" Ctrlp.vim
 let g:ctrlp_map = '<leader>j'
-map <leader>f :CtrlPMRU<CR>
 noremap <leader>f :CtrlPMRU<CR>
 noremap <leader>b :CtrlPBuffer<CR>
 noremap <leader>g :CtrlPGhq<CR>
@@ -664,15 +668,18 @@ au BufRead,BufNewFile *.jade set ft=jade syntax=jade
 "" Less template syntax
 au BufRead,BufNewFile *.less set ft=less syntax=less
 
+"" Blade template filytype
+au BufRead,BufNewFile *.blade.php set ft=html syntax=blade
+
 "" Indent html
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1  = "inc"
 
-"" Indent for python, c, cpp
-autocmd FileType python,c,cpp,markdown set softtabstop=4
-autocmd FileType python,c,cpp,markdown set shiftwidth=4
-autocmd FileType python,c,cpp,markdown set tabstop=4
+"" Indent for python, c, cpp, c#, go
+autocmd FileType python,c,cpp,markdown,cs,go set softtabstop=4
+autocmd FileType python,c,cpp,markdown,cs,go set shiftwidth=4
+autocmd FileType python,c,cpp,markdown,cs,go set tabstop=4
 
 "" DelimitMate
 let delimitMate_expand_space = 1
@@ -700,12 +707,9 @@ let g:gundo_close_on_revert = 1
 "" Vim indent guides
 let indent_guides_enable_on_vim_startup = 1
 
-"" XMLEdit
-let g:xmledit_enable_html = 1
-
 "" Vim Airline
 set timeoutlen=1000 ttimeoutlen=50
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = -1
 
 "" Markdown
@@ -722,7 +726,7 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
 "" Ag.vim
-nnoremap <leader>a :Ag ''<left>
+nnoremap <leader>a :Ag ""<left>
 
 "" YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
@@ -737,3 +741,30 @@ autocmd FileType haskell set tabstop=8
 autocmd FileType haskell set shiftwidth=4
 autocmd FileType haskell set shiftround
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+"" Vim Plug options
+let g:plug_timeout = 360
+let g:plug_retries = 5
+
+"" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" C#
+let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+" Javascript
+let g:syntastic_javascript_checkers = ['eslint']
+
+"" For quick find git conflict
+function! FindConflict()
+  try
+    /<<<<<<<
+  catch
+  endtry
+endfunction
+nnoremap <leader>gc :call FindConflict()<CR>

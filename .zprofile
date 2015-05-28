@@ -39,6 +39,16 @@ export COMPOSER_DIR=$HOME/.composer
 # Rbenv root
 export RBENV_ROOT=$HOME/.rbenv
 
+# Linuxbrew
+export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH
+export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH
+
+# Go
+export GOPATH=$HOME/Dev/go
+
+# NVM
+export NVM_DIR=$HOME/.nvm
+
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
@@ -50,8 +60,10 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
+  $GOPATH/bin
   $COMPOSER_DIR/vendor/bin
   $RBENV_ROOT/bin
+  $HOME/.linuxbrew/bin
   $path
 )
 
@@ -80,6 +92,9 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+# NVM
+source $(brew --prefix nvm)/nvm.sh
 
 # Rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

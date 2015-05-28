@@ -1,0 +1,17 @@
+[user]
+	name = Linh Tran
+	email = linh.mtran168@live.com
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = /usr/bin/vim
+[alias]
+	lg = log --all --graph --decorate --oneline
+[color]
+	ui = true
+[push]
+	default = simple
+[http]
+[ghq]
+	root = ~/Dev
+[merge]
+	tool = vimdiff
