@@ -1,0 +1,11 @@
+set autoindent
+set smartindent
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set cursorline
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+set wrap
