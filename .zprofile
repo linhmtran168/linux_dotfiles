@@ -33,6 +33,17 @@ fi
 # Paths
 #
 
+# Java
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+
+# Hadoop
+export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
+
+# HIVE and HCATALOG
+export HIVE_HOME=/home/linhtm/.linuxbrew/Cellar/hive/1.1.1/libexec
+export HCAT_HOME=/home/linhtm/.linuxbrew/Cellar/hive/1.1.1/libexec/hcatalog
+
+
 # Composer
 export COMPOSER_DIR=$HOME/.composer
 

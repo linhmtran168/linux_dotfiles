@@ -36,7 +36,7 @@ Plug 'sjl/vitality.vim'
 Plug 'gcmt/taboo.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'YankRing.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'terryma/vim-multiple-cursors'
 
 " Coding
