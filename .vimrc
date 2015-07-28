@@ -99,6 +99,9 @@ Plug 'hdima/python-syntax'
 " Vim themes
 Plug 'chriskempson/base16-vim'
 
+" Dockerfile
+Plug 'ekalinin/Dockerfile.vim'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

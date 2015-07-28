@@ -2,7 +2,7 @@
 	name = Linh Tran
 	email = linh.mtran168@live.com
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.gitignore
 	editor = /usr/bin/vim
 [alias]
 	lg = log --all --graph --decorate --oneline

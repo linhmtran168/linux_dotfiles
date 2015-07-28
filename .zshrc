@@ -18,6 +18,7 @@ alias tmk='tmux kill-session -t'
 
 # bower
 alias bower='noglob bower'
+
 # Peco
 if [[ -s "$HOME/linux_dotfiles/peco.zsh" ]]; then
   source "$HOME/linux_dotfiles/peco.zsh"
@@ -25,6 +26,10 @@ fi
 
 # Autojump
 . /usr/share/autojump/autojump.sh
+
+# Project specific
+export MENDY_WEB_SRC_PATH=/home/linhtm/Dev/github.com/gmo-mobile/minerva/web_root
+export MENDY_AP_SRC_PATH=/home/linhtm/Dev/github.com/gmo-mobile//mercurius
 
 # Set 256color shell
 if [ -e /lib/terminfo/x/xterm-256color  ]; then

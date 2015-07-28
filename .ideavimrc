@@ -5,6 +5,7 @@ set smartcase
 set hlsearch
 set incsearch
 set cursorline
-set wrap
 set showmode
+set wrap
 set scrolloff=5
+set clipboard+=unnamed
