@@ -45,6 +45,7 @@ Plug 'godlygeek/tabular'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+Plug 'luochen1990/rainbow'
 
 " Search
 Plug 'rking/ag.vim'
@@ -771,3 +772,6 @@ function! FindConflict()
   endtry
 endfunction
 nnoremap <leader>gc :call FindConflict()<CR>
+
+" Rainbow
+let g:rainbow_active=1

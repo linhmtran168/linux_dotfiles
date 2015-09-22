@@ -75,6 +75,7 @@ path=(
   $COMPOSER_DIR/vendor/bin
   $RBENV_ROOT/bin
   $HOME/.linuxbrew/bin
+  $HOME/bin/spark-1.5.0-bin-hadoop2.6/bin
   $path
 )
 

@@ -2,3 +2,6 @@
 .idea/
 *.iml
 logs/
+.cache-main
+.cache-tests
+.pmd

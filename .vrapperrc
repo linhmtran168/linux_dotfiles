@@ -8,3 +8,6 @@ set cursorline
 set wrap
 set showmode
 set scrolloff=5
+set ts=2
+set sw=2
+set sts=2
