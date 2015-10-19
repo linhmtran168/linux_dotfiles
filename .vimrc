@@ -74,6 +74,7 @@ Plug 'sukima/xmledit'
 Plug 'mxw/vim-jsx'
 Plug 'xsbeats/vim-blade'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'pearofducks/ansible-vim'
 
 " Indent
 Plug 'nathanaelkane/vim-indent-guides'
@@ -754,15 +755,22 @@ let g:plug_retries = 5
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
 " C#
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+
 " Javascript
 let g:syntastic_javascript_checkers = ['eslint']
+
+" Rainbow
+let g:rainbow_active=1
+
+" Remove windows' end of line
+nnoremap <leader>rm :%s///g<CR>
 
 "" For quick find git conflict
 function! FindConflict()
@@ -772,6 +780,3 @@ function! FindConflict()
   endtry
 endfunction
 nnoremap <leader>gc :call FindConflict()<CR>
-
-" Rainbow
-let g:rainbow_active=1

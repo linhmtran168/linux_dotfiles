@@ -43,7 +43,6 @@ export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 export HIVE_HOME=/home/linhtm/.linuxbrew/Cellar/hive/1.1.1/libexec
 export HCAT_HOME=/home/linhtm/.linuxbrew/Cellar/hive/1.1.1/libexec/hcatalog
 
-
 # Composer
 export COMPOSER_DIR=$HOME/.composer
 
@@ -75,7 +74,7 @@ path=(
   $COMPOSER_DIR/vendor/bin
   $RBENV_ROOT/bin
   $HOME/.linuxbrew/bin
-  $HOME/bin/spark-1.5.0-bin-hadoop2.6/bin
+  $HOME/.linuxbrew/sbin
   $path
 )
 

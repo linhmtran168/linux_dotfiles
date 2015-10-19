@@ -30,6 +30,7 @@ fi
 # Project specific
 export MENDY_WEB_SRC_PATH=/home/linhtm/Dev/github.com/gmo-mobile/minerva/web_root
 export MENDY_AP_SRC_PATH=/home/linhtm/Dev/github.com/gmo-mobile//mercurius
+export MENDY_ADMIN_SRC_PATH=/home/linhtm/Dev/github.com/gmo-mobile/janus
 
 # Set 256color shell
 if [ -e /lib/terminfo/x/xterm-256color  ]; then
