@@ -44,7 +44,7 @@ Plug 'SirVer/ultisnips'
 Plug 'godlygeek/tabular'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 Plug 'luochen1990/rainbow'
 
 " Search
@@ -75,6 +75,7 @@ Plug 'mxw/vim-jsx'
 Plug 'xsbeats/vim-blade'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'pearofducks/ansible-vim'
+Plug 'ekalinin/Dockerfile.vim'
 
 " Indent
 Plug 'nathanaelkane/vim-indent-guides'
@@ -88,9 +89,19 @@ Plug 'slim-template/vim-slim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-haml'
 
+" Clojure
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-leiningen'
+Plug 'venantius/vim-eastwood'
+Plug 'vim-scripts/paredit.vim'
+Plug 'venantius/vim-eastwood'
+Plug 'venantius/vim-cljfmt'
+Plug 'kien/rainbow_parentheses.vim'
+
 " Haskell
 Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
+Plug 'neovimhaskell/haskell-vim'
 
 " Go
 Plug 'fatih/vim-go'
@@ -98,11 +109,11 @@ Plug 'fatih/vim-go'
 " Python
 Plug 'hdima/python-syntax'
 
+" Scala
+Plug 'derekwyatt/vim-scala'
+
 " Vim themes
 Plug 'chriskempson/base16-vim'
-
-" Dockerfile
-Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
 
@@ -681,10 +692,10 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1  = "inc"
 
-"" Indent for python, c, cpp, c#, go
-autocmd FileType python,c,cpp,markdown,cs,go set softtabstop=4
-autocmd FileType python,c,cpp,markdown,cs,go set shiftwidth=4
-autocmd FileType python,c,cpp,markdown,cs,go set tabstop=4
+"" Indent for python, c, cpp, c#, java
+autocmd FileType python,c,cpp,markdown,cs,java,php set softtabstop=4
+autocmd FileType python,c,cpp,markdown,cs,java,php set shiftwidth=4
+autocmd FileType python,c,cpp,markdown,cs,java,php set tabstop=4
 
 "" DelimitMate
 let delimitMate_expand_space = 1
@@ -742,10 +753,19 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 
 "" Haskell
 autocmd FileType haskell set softtabstop=4
-autocmd FileType haskell set tabstop=8
+autocmd FileType haskell set tabstop=4
 autocmd FileType haskell set shiftwidth=4
 autocmd FileType haskell set shiftround
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+"" Go
+autocmd FileType go set shiftwidth=8
+autocmd FileType go set tabstop=8
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 "" Vim Plug options
 let g:plug_timeout = 360
@@ -764,7 +784,10 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 
 " Javascript
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['jshint']
+" Go
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Rainbow
 let g:rainbow_active=1
