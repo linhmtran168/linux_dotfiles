@@ -115,3 +115,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if [ -f $HOME/.venvburrito/startup.sh ]; then
     . $HOME/.venvburrito/startup.sh
 fi
+# Ubuntu make installation of Rust Lang
+export LD_LIBRARY_PATH=/home/linhtm/.local/share/umake/rust/rust-lang/rustc/lib:$LD_LIBRARY_PATH
+PATH=/home/linhtm/.local/share/umake/rust/rust-lang/rustc/bin:/home/linhtm/.local/share/umake/rust/rust-lang/cargo/bin:$PATH
+
