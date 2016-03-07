@@ -115,6 +115,3 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if [ -f $HOME/.venvburrito/startup.sh ]; then
     . $HOME/.venvburrito/startup.sh
 fi
-
-# GVM
-[[ -s "/home/linhtm/.gvm/scripts/gvm" ]] && source "/home/linhtm/.gvm/scripts/gvm"
