@@ -59,6 +59,9 @@ export GOPATH=$HOME/Dev/go
 # NVM
 export NVM_DIR=$HOME/.nvm
 
+# Anaconda
+export ANACONDA_PATH=$HOME/anaconda3
+
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
@@ -69,13 +72,14 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  /usr/local/{bin,sbin}
+  $ANACONDA_PATH/bin
   $GOPATH/bin
   $COMPOSER_DIR/vendor/bin
   $RBENV_ROOT/bin
+  $HOME/.local/bin
   $HOME/.linuxbrew/bin
   $HOME/.linuxbrew/sbin
-  $HOME/.local/bin
+  /usr/local/{bin,sbin}
   $path
 )
 
@@ -111,11 +115,9 @@ source $(brew --prefix nvm)/nvm.sh
 # Rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-# Startup virtualenv-burrito
-if [ -f $HOME/.venvburrito/startup.sh ]; then
-    . $HOME/.venvburrito/startup.sh
-fi
 # Ubuntu make installation of Rust Lang
-export LD_LIBRARY_PATH=/home/linhtm/.local/share/umake/rust/rust-lang/rustc/lib:$LD_LIBRARY_PATH
 PATH=/home/linhtm/.local/share/umake/rust/rust-lang/rustc/bin:/home/linhtm/.local/share/umake/rust/rust-lang/cargo/bin:$PATH
+export LD_LIBRARY_PATH=/home/linhtm/.local/share/umake/rust/rust-lang/rustc/lib:$LD_LIBRARY_PATH
 
+# Ubuntu make installation of Ubuntu Make binary symlink
+PATH=/home/linhtm/.local/share/umake/bin:$PATH
