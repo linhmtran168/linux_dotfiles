@@ -21,13 +21,22 @@ export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
 
+# Wine Setting
+export WINEARCH=win32
+
 #
 # Language
 #
 
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
+  export LC_ALL='en_US.UTF-8'
 fi
+
+# IBUS
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
 
 #
 # Paths
