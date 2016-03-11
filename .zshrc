@@ -10,6 +10,20 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# Function to toggle between anaconda and system python
+function tg_conda {
+  if  [[ -z "$PYTHON_DIST" ]]; then
+    _OLD_PATH="$PATH"
+    export PATH="$HOME/anaconda3/bin:$PATH"
+    export PYTHON_DIST='pydist:conda'
+    echo "Using Anaconda Python"
+  else
+    export PATH="$_OLD_PATH"
+    unset PYTHON_DIST
+    echo "Back to system Python"
+  fi
+}
+
 # tmux
 alias tma='tmux attach -d -t'
 alias tmn='tmux new -s $(basename $(pwd))'

@@ -68,9 +68,6 @@ export GOPATH=$HOME/Dev/go
 # NVM
 export NVM_DIR=$HOME/.nvm
 
-# Anaconda
-export ANACONDA_PATH=$HOME/anaconda3
-
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
@@ -81,13 +78,11 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  $ANACONDA_PATH/bin
   $GOPATH/bin
   $COMPOSER_DIR/vendor/bin
   $RBENV_ROOT/bin
   $HOME/.local/bin
-  $HOME/.linuxbrew/bin
-  $HOME/.linuxbrew/sbin
+  $HOME/.linuxbrew/{bin,sbin}
   /usr/local/{bin,sbin}
   $path
 )
