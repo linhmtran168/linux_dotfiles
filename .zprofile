@@ -52,6 +52,10 @@ export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 export HIVE_HOME=/home/linhtm/.linuxbrew/Cellar/hive/1.1.1/libexec
 export HCAT_HOME=/home/linhtm/.linuxbrew/Cellar/hive/1.1.1/libexec/hcatalog
 
+# Ubuntu make installation of Ubuntu Make binary symlink
+export UMAKE_PATH=/home/linhtm/.local/share/umake
+#
+
 # Composer
 export COMPOSER_DIR=$HOME/.composer
 
@@ -83,6 +87,7 @@ path=(
   $RBENV_ROOT/bin
   $HOME/.local/bin
   $HOME/.linuxbrew/{bin,sbin}
+  $UMAKE_PATH/bin
   /usr/local/{bin,sbin}
   $path
 )
@@ -118,10 +123,3 @@ source $(brew --prefix nvm)/nvm.sh
 
 # Rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# Ubuntu make installation of Rust Lang
-PATH=/home/linhtm/.local/share/umake/rust/rust-lang/rustc/bin:/home/linhtm/.local/share/umake/rust/rust-lang/cargo/bin:$PATH
-export LD_LIBRARY_PATH=/home/linhtm/.local/share/umake/rust/rust-lang/rustc/lib:$LD_LIBRARY_PATH
-
-# Ubuntu make installation of Ubuntu Make binary symlink
-PATH=/home/linhtm/.local/share/umake/bin:$PATH
