@@ -10,6 +10,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# More completition for zsh
+fpath=(/home/linhtm/.linuxbrew/share/zsh/site-functions /home/linhtm/.linuxbrew/share/zsh-completions $fpath)
+
 # Function to toggle between anaconda and system python
 function tg_conda {
   if  [[ -z "$PYTHON_DIST" ]]; then

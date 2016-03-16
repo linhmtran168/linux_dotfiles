@@ -45,6 +45,9 @@ export QT_IM_MODULE=ibus
 # Java
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
+# CARGO_PATH
+export CARGO_PATH=$HOME/.cargo
+
 # Hadoop
 export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 
@@ -82,6 +85,7 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  $CARGO_PATH/bin
   $GOPATH/bin
   $COMPOSER_DIR/vendor/bin
   $RBENV_ROOT/bin
