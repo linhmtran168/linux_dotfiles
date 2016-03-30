@@ -27,11 +27,9 @@ export WINEARCH=win32
 #
 # Language
 #
-
-if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
-  export LC_ALL='en_US.UTF-8'
-fi
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+export LC_TYPE='en_US.UTF-8'
 
 # IBUS
 export GTK_IM_MODULE=ibus
