@@ -787,7 +787,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 
 " Javascript
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
+
 " Go
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
