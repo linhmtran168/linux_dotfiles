@@ -41,6 +41,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Chiel92/vim-autoformat'
+Plug 'mhinz/vim-startify'
 
 " Coding
 Plug 'SirVer/ultisnips'
