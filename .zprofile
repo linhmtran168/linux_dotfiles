@@ -55,7 +55,9 @@ export HCAT_HOME=/home/linhtm/.linuxbrew/Cellar/hive/1.1.1/libexec/hcatalog
 
 # Ubuntu make installation of Ubuntu Make binary symlink
 export UMAKE_PATH=/home/linhtm/.local/share/umake
-#
+
+# Python path
+export PYTHONPATH=$HOME/Dev/github.com/BVLC/caffe/python:$PYTHONPATH
 
 # Composer
 export COMPOSER_DIR=$HOME/.composer
@@ -88,9 +90,9 @@ path=(
   $COMPOSER_DIR/vendor/bin
   $RBENV_ROOT/bin
   $HOME/.local/bin
-  $HOME/.linuxbrew/{bin,sbin}
   $UMAKE_PATH/bin
   /usr/local/{bin,sbin}
+  $HOME/.linuxbrew/{bin,sbin}
   $path
 )
 

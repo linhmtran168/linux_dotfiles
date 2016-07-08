@@ -4,6 +4,7 @@
 [core]
 	excludesfile = ~/.gitignore
 	editor = /usr/bin/vim
+	whitespace = cr-at-eol
 [alias]
 	lg = log --all --graph --decorate --oneline
 [color]

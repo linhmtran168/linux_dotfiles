@@ -5,3 +5,4 @@ logs/
 .cache-main
 .cache-tests
 .pmd
+browse.VC.db
