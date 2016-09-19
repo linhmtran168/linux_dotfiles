@@ -12,7 +12,12 @@ filetype off
 " => Vim plug Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Required:
-call plug#begin('~/.vim/plugged')
+if has('nvim')
+  call plug#begin('~/.config/nvim/plugged')
+else
+  call plug#begin('~/.vim/plugged')
+end
+
 
 " My Bundles here:
 
@@ -110,6 +115,9 @@ Plug 'neovimhaskell/haskell-vim'
 " Go
 Plug 'fatih/vim-go'
 
+" Typescript
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
 " Python
 Plug 'hdima/python-syntax'
 
@@ -579,7 +587,9 @@ set fillchars=diff:·
 set re=1
 
 " Set xterm2 mouse mode to allow resizing of splits with mouse inside tmux
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
+end
 " Highlight cursor line.
 augroup CursorLine
   au!

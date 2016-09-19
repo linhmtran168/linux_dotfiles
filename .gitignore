@@ -7,3 +7,4 @@ logs/
 .pmd
 browse.VC.db
 .vscode
+javac-services.*
