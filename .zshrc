@@ -62,3 +62,6 @@ BASE16_SHELL="$HOME/Dev/github.com/chriskempson/base16-shell/base16-eighties.dar
 
 # Thefuck
 eval $(thefuck --alias fuk)
+
+export XDG_DATA_DIRS="/home/linhtm/.linuxbrew/share:$XDG_DATA_DIRS"
+
