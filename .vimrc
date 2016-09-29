@@ -838,3 +838,8 @@ function! FindConflict()
   endtry
 endfunction
 nnoremap <leader>gc :call FindConflict()<CR>
+
+"" Vim-autoformat
+noremap <F5> :Autoformat<CR>
+let g:formatdef_scalafmt = "'scalafmt'"
+let g:formatters_scala = ['scalafmt']
