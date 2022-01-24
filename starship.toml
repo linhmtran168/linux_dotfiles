@@ -1,0 +1,21 @@
+[git_status]
+conflicted = "🏳"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+untracked = "🤷"
+stashed = "📦"
+modified = "📝"
+renamed = "👅"
+deleted = "🗑"
+staged = "➕"
+
+[kubernetes]
+format = "on [⛵ $context\\($namespace\\)](cyan bold) in "
+disabled = false
+
+[conda]
+ignore_base = false
+
+[gcloud]
+format = "on [$symbol$active]($style) "
