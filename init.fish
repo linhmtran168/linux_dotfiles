@@ -5,8 +5,6 @@ set -xg LANG en_US.UTF-8
 set -xg GOPATH "$HOME/go"
 set -xg CC "gcc"
 set -xg CXX "g++"
-# Java Home
-set -xg JAVA_HOME "/usr/lib/jvm/java-1.14.0-openjdk-amd64"
 # Default editor
 set -xg VISUAL "vim"
 set -xg EDITOR "$VISUAL"

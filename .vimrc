@@ -3,6 +3,8 @@
 "             http://amix.dk - amix@amix.dk
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Skip initialization for vim-tiny or vim-small
+if !1 | finish | endif
 
 " Remove vi old behavior
 set nocompatible
@@ -34,24 +36,25 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'honza/vim-snippets'
 Plug 'sjl/gundo.vim'
 Plug 'sjl/vitality.vim'
 Plug 'gcmt/taboo.vim'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'YankRing.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'vim-scripts/YankRing.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
 Plug 'terryma/vim-multiple-cursors'
-Plug 'ryanoasis/vim-devicons'
 Plug 'Chiel92/vim-autoformat'
 Plug 'mhinz/vim-startify'
+Plug 'justinmk/vim-sneak'
 
 " Coding
 Plug 'SirVer/ultisnips'
 Plug 'godlygeek/tabular'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'luochen1990/rainbow'
@@ -66,67 +69,37 @@ Plug 'airblade/vim-gitgutter'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
-Plug 'kchmck/vim-coffee-script'
 Plug 'moll/vim-node'
 
 " Markup
 Plug 'mattn/emmet-vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'groenewege/vim-less'
 Plug 'othree/html5.vim'
-Plug 'wavded/vim-stylus'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'JSON.vim'
-Plug 'digitaltoad/vim-jade'
+Plug 'vim-scripts/JSON.vim'
 Plug 'sukima/xmledit'
 Plug 'mxw/vim-jsx'
-Plug 'xsbeats/vim-blade'
-Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'pearofducks/ansible-vim'
 Plug 'ekalinin/Dockerfile.vim'
 
 " Indent
 Plug 'nathanaelkane/vim-indent-guides'
 
-" Ruby & Rails
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-cucumber'
-Plug 'slim-template/vim-slim'
+" Ruby
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-haml'
-
-" Clojure
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-leiningen'
-Plug 'venantius/vim-eastwood'
-Plug 'vim-scripts/paredit.vim'
-Plug 'venantius/vim-eastwood'
-Plug 'venantius/vim-cljfmt'
-Plug 'kien/rainbow_parentheses.vim'
-
-" Haskell
-Plug 'eagletmt/ghcmod-vim'
-Plug 'eagletmt/neco-ghc'
-Plug 'neovimhaskell/haskell-vim'
 
 " Go
 Plug 'fatih/vim-go'
 
-" CSharp
-Plug 'OmniSharp/omnisharp-vim', { 'do': 'git submodule update --init --recursive && cd server && xbuild' }
-Plug 'OrangeT/vim-csharp'
-
 " Typescript
 Plug 'Quramy/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
+
 " Python
 Plug 'hdima/python-syntax'
 
-" Scala
-Plug 'derekwyatt/vim-scala'
+" Rust
+Plug 'rust-lang/rust.vim'
 
 " Vim themes
 Plug 'chriskempson/base16-vim'
@@ -159,7 +132,7 @@ nmap <leader>w :w!<cr>
 autocmd! bufwritepost vimrc source ~/.vimrc
 
 " Set default shell
-set shell=/usr/bin/zsh
+set shell=/usr/local/bin/fish
 
 " No showmatch
 set noshowmatch
@@ -198,7 +171,6 @@ set ignorecase "Ignore case when searching
 set smartcase
 
 set hlsearch "Highlight search things
-
 set incsearch "Make search act like search in modern browsers
 
 set lazyredraw "Don't redraw while executing macros
@@ -207,6 +179,8 @@ set magic "Set magic on, for regular expressions
 
 set showmatch "Show matching bracets when text indicator is over them
 set mat=2 "How many tenths of a second to blink
+
+set scrolloff=5 "Always 5 lines above/below the cursor
 
 " No sound on errors
 set noerrorbells
@@ -227,17 +201,17 @@ set foldmethod=indent
 syntax enable
 
 "Set font
-set gfn=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set guifont=Source\ Code\ Pro\ Medium\ for\ Powerline:h12
 set background=dark
 set t_Co=256
 
 if has('gui_running')
   set guioptions-=T
   set guioptions-=e
-  colorscheme base16-eighties
+  colorscheme base16-tomorrow-night
 else
   let base16colorspace=256
-  colorscheme base16-eighties
+  colorscheme base16-tomorrow-night
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -309,19 +283,18 @@ map k gk
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move btw. windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
 " Nvim configuration
 if has('nvim')
   tnoremap <C-h> <C-\><C-n><C-w>h
   tnoremap <C-j> <C-\><C-n><C-w>j
   tnoremap <C-k> <C-\><C-n><C-w>k
   tnoremap <C-l> <C-\><C-n><C-w>l
+else
+  map <C-j> <C-W>j
+  map <C-k> <C-W>k
+  map <C-h> <C-W>h
+  map <C-l> <C-W>l
 end
-
 " Split
 set splitbelow
 set splitright
@@ -599,8 +572,8 @@ set number
 set relativenumber
 set ttyfast
 set fillchars=diff:·
-" Fix ruby slow navigation
-set re=1
+" Fix popup
+map q: :q
 
 " Set xterm2 mouse mode to allow resizing of splits with mouse inside tmux
 if !has('nvim')
@@ -644,16 +617,12 @@ let NERDTreeQuitOnOpen                  = 1
 let g:nerdtree_tabs_open_on_gui_startup = 0
 nmap <leader>n :NERDTreeMirrorToggle<CR>
 
-"" Ctrlp.vim
-let g:ctrlp_map = '<leader>j'
-noremap <leader>f :CtrlPMRU<CR>
-noremap <leader>b :CtrlPBuffer<CR>
-noremap <leader>g :CtrlPGhq<CR>
+"" Fzf.vim
+let g:fzf_command_prefix = 'Fzf'
+noremap <leader>f :FzfHistory<CR>
+noremap <leader>b :FzfBuffers<CR>
+noremap <leader>j :FzfFiles<CR>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = {
-  \ 'dir'  : '\v[\/](\.(git|hg|svn|bzr|DS_Store|coffee)|node_modules|)$',
-  \ 'file' : '\v\.(o|swp|pyc|wav|mp3|ogg|blend|exe|so|dll)$',
-  \ }
 
 "" Tagbar
 nmap <leader>t :TagbarToggle<CR>
@@ -780,7 +749,6 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_extra_conf_vim_data = ['&filetype']
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 "" Haskell
 autocmd FileType haskell set softtabstop=4
@@ -802,33 +770,17 @@ let g:go_highlight_build_constraints = 1
 let g:plug_timeout = 360
 let g:plug_retries = 5
 
-"" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" C#
-let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
-
-" Javascript
-let g:syntastic_javascript_checkers = ['eslint']
-
-" Go
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
 " Omni sharp
-let g:OmniSharp_selector_ui = 'ctrlp'
+" let g:OmniSharp_selector_ui = 'ctrlp'
 
 " Rainbow
 let g:rainbow_active=1
 
+"" Dash
+:nmap <silent> <leader>da <Plug>DashSearch
+
 " Remove windows' end of line
-nnoremap <leader>rm :%s///g<CR>
+nnoremap <leader>rm :%s/ //g<CR>
 
 "" For quick find git conflict
 function! FindConflict()
@@ -841,5 +793,15 @@ nnoremap <leader>gc :call FindConflict()<CR>
 
 "" Vim-autoformat
 noremap <F5> :Autoformat<CR>
+" Scala
 let g:formatdef_scalafmt = "'scalafmt'"
 let g:formatters_scala = ['scalafmt']
+" Python
+let g:formatter_yapf_style = 'pep8'
+
+"" Base16-vim
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
