@@ -2,7 +2,7 @@
 set -xg LC_ALL en_US.UTF-8
 set -xg LANG en_US.UTF-8
 # Go
-set -xg GOPATH "$HOME/go"
+set -xg GOPATH "$HOME/Dev/go"
 set -xg CC "gcc"
 set -xg CXX "g++"
 # Default editor
@@ -19,6 +19,9 @@ end
 
 # Linuxbrew
 eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+# ASDF
+source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
 
 # Starship
 starship init fish | source
@@ -46,4 +49,11 @@ alias pip=pip3
 # Kubernetes
 alias k9sDanger=/home/linuxbrew/.linuxbrew/bin/k9s
 alias k9s='k9s --readonly'
+
+# SSH Agent
+if not pgrep --full ssh-agent | string collect > /dev/null
+  eval (ssh-agent -c)
+  set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+end
 

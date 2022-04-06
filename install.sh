@@ -9,7 +9,7 @@ git clone git@github.com:linhmtran168/linux_dotfiles.git
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # Install brew package
 brew install python fish python vim tmux cmake dust diff-so-fancy bat sd hyperfine exa fd fzf xh z \
-    ghq rbenv golang helm hadolint htop minikube ripgrep sd starship tokei \
+    ghq golang helm hadolint htop minikube ripgrep sd starship tokei \
     tealdeer cheat curlie git-delta duf procs broots terraform kubernetes-cli direnv
 brew install clementtsang/bottom/bottom
 
@@ -51,17 +51,20 @@ ghq get git@github.com:powerline/powerline.git
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -sf ~/mac_dotfiles/.tmux.conf ~/.tmux.conf
 
-# NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-nvm install --lts
-nvm use --lts
-nvm alias default node
-npm -g install eslint
-
 # Ruby
-rbenv install 2.7.3
-rbenv global 2.7.3
-gem install pry awesome_print bundler rubocop
+# ASDF
+# Ruby
+asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf install ruby latest
+asdf global ruby latest
+asdf reshim ruby latest
+gem install pry
+
+# Nodejs
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf install nodejs lts
+asdf global nodejs lts
+asdf reshim nodejs lts
 
 # Rust
 curl https://sh.rustup.rs -sSf | sh
