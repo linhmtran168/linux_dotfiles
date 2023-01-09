@@ -11,20 +11,23 @@ set -xg EDITOR "$VISUAL"
 # Set path
 set --universal fish_user_paths $HOME/bin $HOME/.local/bin $HOME/go/bin $GOPATH/bin $HOME/.cargo/bin $HOME/.krew/bin $HOME/.composer/vendor/bin /home/linuxbrew/.linuxbrew/opt/openjdk/bin $HOME/.cargo/bin
 
+# Linuxbrew
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+# Zoxide
+zoxide init fish | source
+
+# Starship
+starship init fish | source
+
+# ASDF
+source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
+
 # Base16 Shell
 if status --is-interactive
     set BASE16_SHELL "$HOME/.config/base16-shell/"
     source "$BASE16_SHELL/profile_helper.fish"
 end
-
-# Linuxbrew
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
-# ASDF
-source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
-
-# Starship
-starship init fish | source
 
 # FZF
 set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore-vcs --hidden'

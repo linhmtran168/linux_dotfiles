@@ -8,9 +8,9 @@ git clone git@github.com:linhmtran168/linux_dotfiles.git
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # Install brew package
-brew install python fish python vim tmux cmake dust diff-so-fancy bat sd hyperfine exa fd fzf xh z \
-    ghq golang helm hadolint htop minikube ripgrep sd starship tokei \
-    tealdeer cheat curlie git-delta duf procs broots terraform kubernetes-cli direnv
+brew install dust diff-so-fancy bat sd hyperfine exa fd fzf xh \
+    ghq golang helm hadolint ripgrep sd starship tokei \
+    tealdeer cheat curlie git-delta duf procs direnv nvim
 brew install clementtsang/bottom/bottom
 
 # Fish
@@ -23,13 +23,15 @@ chsh -s /usr/bin/fish
 ## OMF
 curl -L https://get.oh-my.fish | fish
 omf update
-omf install python rustup z fzf
+omf install python rustup
+/home/linuxbrew/.linuxbrew/opt/fzf/install
+zoxide init --cmd cd --hook prompt fish
 
 # Symlink config file for git and fish
 ln -sf ~/linux_dotfiles/.gitignore ~/.gitignore
 cp ~/linux_dotfiles/.gitconfig ~/.gitconfig # must manually change email in git config
-ln -sf ~/linux_dotfiles/fish_conf/init.fish ~/.config/omf/init.fish
-ln -sf ~/linux_dotfiles/fish_conf/key_bindings.fish ~/.config/omf/key_bindings.fish
+ln -sf ~/linux_dotfiles/init.fish ~/.config/omf/init.fish
+ln -sf ~/linux_dotfiles/key_bindings.fish ~/.config/omf/key_bindings.fish
 ln -sf ~/linux_dotfiles/starship.toml ~/.config/starship.toml
 
 # Vim
@@ -39,17 +41,16 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 mkdir ~/.vim/undodir
 
 # Base 16
-ghq get git@github.com:martinlindhe/base16-iterm2.git # Manually change theme using iterm config
+# ghq get git@github.com:martinlindhe/base16-iterm2.git # Manually change theme using iterm config
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell # Use base16-xxx shell command to change theme
 
 # Powerline
-pip3 install powerline-status
-pip3 install psutil
+pip3 install powerline-status psutil
 ghq get git@github.com:powerline/powerline.git
 
 # Tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-ln -sf ~/mac_dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf ~/linux_dotfiles/.tmux.conf ~/.tmux.conf
 
 # Ruby
 # ASDF
@@ -83,5 +84,4 @@ echo \
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker $USER
-newgrp docker
 
