@@ -14,12 +14,6 @@ set --universal fish_user_paths $HOME/bin $HOME/.local/bin $HOME/go/bin $GOPATH/
 # Linuxbrew
 eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
-# Zoxide
-zoxide init fish | source
-
-# Starship
-starship init fish | source
-
 # ASDF
 source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
 
@@ -59,4 +53,21 @@ if not pgrep --full ssh-agent | string collect > /dev/null
   set -Ux SSH_AGENT_PID $SSH_AGENT_PID
   set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
 end
+
+# Direnv
+direnv hook fish | source
+
+# Starship
+function starship_transient_prompt_func
+  starship module character
+end
+function starship_transient_rprompt_func
+  starship module time
+end
+starship init fish | source
+enable_transience
+
+# Zoxide
+zoxide init fish | source
+set -xg __zoxide_z_prefix 'z!'
 
