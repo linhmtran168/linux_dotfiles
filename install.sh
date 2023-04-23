@@ -20,19 +20,15 @@ sudo apt install fish
 # Change default shell to fish
 # Must run sudo vim /etc/shells to add fish to list of shell
 chsh -s /usr/bin/fish
-## OMF
-curl -L https://get.oh-my.fish | fish
-omf update
-omf install python rustup
-/home/linuxbrew/.linuxbrew/opt/fzf/install
-zoxide init --cmd cd --hook prompt fish
+## Fisher
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+## Tide
+fisher install IlanCosman/tide@v5
 
 # Symlink config file for git and fish
 ln -sf ~/linux_dotfiles/.gitignore ~/.gitignore
 cp ~/linux_dotfiles/.gitconfig ~/.gitconfig # must manually change email in git config
-ln -sf ~/linux_dotfiles/init.fish ~/.config/omf/init.fish
-ln -sf ~/linux_dotfiles/key_bindings.fish ~/.config/omf/key_bindings.fish
-ln -sf ~/linux_dotfiles/starship.toml ~/.config/starship.toml
+ln -sf ~/linux_dotfiles/init.fish ~/.config/fish/conf.d/init.fish
 
 # Vim
 ln -sf ~/linux_dotfiles/.vimrc ~
